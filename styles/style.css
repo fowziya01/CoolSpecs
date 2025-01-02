@@ -1,0 +1,77 @@
+
+h1{
+    color: rgb(77, 77, 244);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    font-size: 4 rem;
+    font-weight: bold;
+
+}
+span{
+    color:rgb(10, 10, 77);
+}
+#logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgb(240,240,208) ;
+    font-weight: 1.5 rem;
+
+}
+img{
+    height: 5%;
+    width: 5%;
+}
+#header{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-size:small;
+}
+#search-bar{
+    width: 300px; /* Adjust width of the search bar */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem; 
+}
+a{
+    color:rgb(4, 4, 40);
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+}
+/* product styling */
+.product-bar {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+   
+  }
+  #category{
+    font-weight:bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .product-bar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .product-bar ul li {
+    margin: 5px 0;
+  }
+  
+  .product-bar ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .product-bar ul li a:hover {
+    color: #007bff;
+  }
+  #banner img{
+    width:min-content;
+    
+  }
