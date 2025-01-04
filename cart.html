@@ -29,10 +29,15 @@
           <img src="${product.image}" alt="${product.title}">
           <h3>${product.title}</h3>
           <p>Price: ₹${product.price}</p>
-          <button class="buy-now">Buy Now</button>
+          <button onclick="buyNow()">Buy Now</button>
         `;
         cartContainer.appendChild(card);
       });
+    }
+    function buyNow() {
+      alert('Thank you for your purchase!');
+      localStorage.removeItem('cart');
+      location.reload();
     }
   </script>
 
