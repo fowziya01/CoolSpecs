@@ -1,4 +1,4 @@
-import { navbar } from "./navbar.js";
+import { navbar} from "./navbar.js";
 document.addEventListener('DOMContentLoaded', () => {
     const signinToggle = document.getElementById('signin-toggle');
     const signupToggle = document.getElementById('signup-toggle');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Mock Sign-In Validation
       if (email === "user@example.com" && password === "123") {
         alert('Sign-In Successful!');
-        window.location.href = index.html; // Redirect to homepage
+        window.location.href = "index.html"; // Redirect to homepage
       } else {
         alert('Invalid credentials. Please try again.');
       }

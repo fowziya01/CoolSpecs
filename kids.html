@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CoolSpecs/styles/style.css">
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+      }
+  
+      h3 {
+        margin: 10px 0;
+        text-align: center;
+      }
+  
+      #gallery-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+        width: 90%;
+        max-width: 1200px;
+      }
+  
+      .card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+  
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+  
+      .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+  
+      .card h3 {
+        font-size: 18px;
+        margin: 5px 0;
+      }
+  
+      .card p {
+        font-size: 16px;
+        color: #555;
+      }
+    </style>
+</head>
+<body>
+  <div id="navbar">
+       
+  </div>
+    
+    <h3>Welcome to coolSpecs! Your Vision, our Passion</h3>
+    <h3> Kid's Glasses </h3>
+      <div id="gallery-container"></div> 
+</body>
+<script>
+   
+   const products = [
+      { image: "/CoolSpecs/images/kids/kid1.webp", title: "Classic Glasses", price: "1500" },
+      { image: "/CoolSpecs/images/kids/kid2.webp", title: "Modern Glasses", price: "1600" },
+      { image: "/CoolSpecs/images/kids/kid3.webp", title: "Stylish Glasses", price: "1700" },
+      { image: "/CoolSpecs/images/kids/kid4.webp", title: "Elegant Glasses", price: "1800" },
+      { image: "/CoolSpecs/images/kids/kid5.webp", title: "Premium Glasses", price: "1900" }
+    ];
+
+    const galleryContainer = document.getElementById('gallery-container');
+
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <h3>${product.title}</h3>
+        <p>price:₹${product.price}</p>
+      `;
+      galleryContainer.appendChild(card);
+    });
+  </script>
+      <script src="/CoolSpecs/sricpts/navbar.js" type="module"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
