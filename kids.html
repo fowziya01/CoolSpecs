@@ -62,6 +62,67 @@
         font-size: 16px;
         color: #555;
       }
+      .rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ddd; /* Default color for empty stars */
+  margin-right: 5px;
+}
+
+.star.filled {
+  color: #FFD700; /* Gold color for filled stars */
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-to-cart {
+  background-color: #28a745;
+  color: white;
+}
+
+.add-to-cart:hover {
+  background-color: #218838;
+}
+
+.add-to-wishlist {
+  background-color: #007bff;
+  color: white;
+}
+
+.add-to-wishlist:hover {
+  background-color: #0056b3;
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ff0000;
+}
+.wishlist-icon span:hover {
+  transform: scale(1.2);
+}
+      #footer{
+        width:100%;
+      }
     </style>
 </head>
 <body>
@@ -72,15 +133,26 @@
     <h3>Welcome to coolSpecs! Your Vision, our Passion</h3>
     <h3> Kid's Glasses </h3>
       <div id="gallery-container"></div> 
+      <div id="footer"></div>
 </body>
 <script>
-   
+   function getStarIcons(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars += '<span class="star filled">&#9733;</span>'; // Filled star
+      } else {
+        stars += '<span class="star">&#9734;</span>'; // Empty star
+      }
+    }
+    return stars;
+  }
    const products = [
-      { image: "/CoolSpecs/images/kids/kid1.webp", title: "Classic Glasses", price: "1500" },
-      { image: "/CoolSpecs/images/kids/kid2.webp", title: "Modern Glasses", price: "1600" },
-      { image: "/CoolSpecs/images/kids/kid3.webp", title: "Stylish Glasses", price: "1700" },
-      { image: "/CoolSpecs/images/kids/kid4.webp", title: "Elegant Glasses", price: "1800" },
-      { image: "/CoolSpecs/images/kids/kid5.webp", title: "Premium Glasses", price: "1900" }
+      { image: "/CoolSpecs/images/kids/kid1.webp", title: "Classic Glasses", price: "1500",rating: 4  },
+      { image: "/CoolSpecs/images/kids/kid2.webp", title: "Modern Glasses", price: "1600",rating: 3 },
+      { image: "/CoolSpecs/images/kids/kid3.webp", title: "Stylish Glasses", price: "1700",rating: 5 },
+      { image: "/CoolSpecs/images/kids/kid4.webp", title: "Elegant Glasses", price: "1800",rating: 3 },
+      { image: "/CoolSpecs/images/kids/kid5.webp", title: "Premium Glasses", price: "1900",rating: 5 }
     ];
 
     const galleryContainer = document.getElementById('gallery-container');
@@ -89,14 +161,25 @@
       const card = document.createElement('div');
       card.classList.add('card');
       card.innerHTML = `
+      <div class="wishlist-icon">
+      <span>&#9829;</span> <!-- Heart symbol -->
+    </div>
         <img src="${product.image}" alt="${product.title}">
         <h3>${product.title}</h3>
         <p>price:₹${product.price}</p>
+         <div class="rating">
+         ${getStarIcons(product.rating)}
+          </div>
+              <div class="card-buttons">
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="add-to-wishlist">Add to Wishlist</button>
+    </div>
       `;
       galleryContainer.appendChild(card);
     });
   </script>
       <script src="/CoolSpecs/sricpts/navbar.js" type="module"></script>
+      <script src="/CoolSpecs/sricpts/footer.js" type="module"></script>
 
 </body>
 </html>

@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CoolSpecs/styles/style.css">
 
-    <title>Document</title>
+    <title>Cart.....</title>
 </head>
+
+
 <body>
-    
+  <h3>Your Cart</h3>
+  <div id="cart-container"></div>
 </body>
+  <script>
+    const cartContainer = document.getElementById('cart-container');
+
+    // Get cart items from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+      cart.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.title}">
+          <h3>${product.title}</h3>
+          <p>Price: ₹${product.price}</p>
+          <button class="buy-now">Buy Now</button>
+        `;
+        cartContainer.appendChild(card);
+      });
+    }
+  </script>
+
+
+
 <script src="/CoolSpecs/sricpts/navbar.js" ></script>
+<script src="/CoolSpecs/sricpts/footer.js" ></script>
 
 </html>
