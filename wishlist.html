@@ -18,10 +18,19 @@
       background-color: #ff4500;
       color: white;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     .product-item button:hover {
       background-color: #e63900;
+    }
+
+    .buy-now-btn {
+      background-color: #28a745;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #218838;
     }
   </style>
 </head>
@@ -32,13 +41,15 @@
     <div class="product-item">
       <h3>Product 1</h3>
       <p>Price: ₹500</p>
-      <button class="add-to-wishlist" data-id="1" data-title="Product 1" data-price="500" data-image="https://via.placeholder.com/100">Add to Wishlist</button>
+      <button class="add-to-wishlist" data-id="1" data-title="Product 1" data-price="500" data-image="/CoolSpecs/images/men/men1.webp">Add to Wishlist</button>
+      <button class="buy-now-btn" data-id="1" data-title="Product 1" data-price="500" data-image="/CoolSpecs/images/men/men1.webp">Buy Now</button>
     </div>
 
     <div class="product-item">
       <h3>Product 2</h3>
       <p>Price: ₹800</p>
-      <button class="add-to-wishlist" data-id="2" data-title="Product 2" data-price="800" data-image="https://via.placeholder.com/100">Add to Wishlist</button>
+      <button class="add-to-wishlist" data-id="2" data-title="Product 2" data-price="800" data-image="/CoolSpecs/images/men/men2.webp">Add to Wishlist</button>
+      <button class="buy-now-btn" data-id="2" data-title="Product 2" data-price="800" data-image="/CoolSpecs/images/men/men2.webp">Buy Now</button>
     </div>
   </div>
 
@@ -65,6 +76,26 @@
           localStorage.setItem('wishlist', JSON.stringify(wishlist));
           alert('Product added to wishlist!');
         }
+      }
+
+      // Handle the Buy Now button click
+      if (e.target.classList.contains('buy-now-btn')) {
+        const product = {
+          id: e.target.getAttribute('data-id'),
+          title: e.target.getAttribute('data-title'),
+          price: e.target.getAttribute('data-price'),
+          image: e.target.getAttribute('data-image')
+        };
+
+        // Retrieve the cart from localStorage or create a new one
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Add product to the cart
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${product.title} has been added to your cart!`);
+        window.location.href = "cart.html"; // Optionally, redirect to the cart page
       }
     });
   </script>
