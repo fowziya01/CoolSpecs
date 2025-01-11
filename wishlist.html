@@ -1,99 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wishlist</title>
+  <title>Product Page</title>
   <style>
-    .wishlist-item {
+    .product-item {
       border: 1px solid #ddd;
       padding: 10px;
       margin: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
-    .wishlist-item img {
-      width: 100px;
-      height: auto;
-      border-radius: 5px;
-    }
-
-    .wishlist-details {
-      flex-grow: 1;
-      padding: 0 10px;
-    }
-
-    .wishlist-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .wishlist-actions button {
+    .product-item button {
       padding: 5px 10px;
       border: none;
       border-radius: 5px;
+      background-color: #ff4500;
+      color: white;
       cursor: pointer;
     }
 
-    .buy-now {
-      background-color: #ff4500;
-      color: white;
-    }
-
-    .buy-now:hover {
+    .product-item button:hover {
       background-color: #e63900;
     }
   </style>
 </head>
 <body>
-  <h2>Your Wishlist</h2>
-  <div id="wishlist-container"></div>
+  <h2>Product List</h2>
+  <div id="product-list">
+    <!-- Example product items -->
+    <div class="product-item">
+      <h3>Product 1</h3>
+      <p>Price: ₹500</p>
+      <button class="add-to-wishlist" data-id="1" data-title="Product 1" data-price="500" data-image="https://via.placeholder.com/100">Add to Wishlist</button>
+    </div>
+
+    <div class="product-item">
+      <h3>Product 2</h3>
+      <p>Price: ₹800</p>
+      <button class="add-to-wishlist" data-id="2" data-title="Product 2" data-price="800" data-image="https://via.placeholder.com/100">Add to Wishlist</button>
+    </div>
+  </div>
 
   <script>
-    const wishlistContainer = document.getElementById('wishlist-container');
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    // Function to handle adding products to the wishlist
+    document.getElementById('product-list').addEventListener('click', function (e) {
+      if (e.target.classList.contains('add-to-wishlist')) {
+        const product = {
+          id: e.target.getAttribute('data-id'),
+          title: e.target.getAttribute('data-title'),
+          price: e.target.getAttribute('data-price'),
+          image: e.target.getAttribute('data-image')
+        };
 
-    if (wishlist.length === 0) {
-      wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
-    } else {
-      wishlist.forEach(product => {
-        const item = document.createElement('div');
-        item.classList.add('wishlist-item');
-        item.innerHTML = `
-          <img src="${product.image}" alt="${product.title}">
-          <div class="wishlist-details">
-            <h3>${product.title}</h3>
-            <p>Price: ₹${product.price}</p>
-          </div>
-          <div class="wishlist-actions">
-            <button class="buy-now" data-id="${product.id}">Buy Now</button>
-          </div>
-        `;
-        wishlistContainer.appendChild(item);
-      });
-    }
+        // Retrieve the wishlist from localStorage or create a new one
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    // Add event listener for "Buy Now" button
-    wishlistContainer.addEventListener('click', function (e) {
-      if (e.target.classList.contains('buy-now')) {
-        const productId = e.target.getAttribute('data-id');
-        const selectedProduct = wishlist.find(p => p.id == productId);
-        if (selectedProduct) {
-      // Ask for confirmation before buying
-      const confirmPurchase = confirm(`Are you sure you want to buy ${selectedProduct.title}?`);
-      if (confirmPurchase) {
-        alert(`Thank you for purchasing ${selectedProduct.title}!`);
-
-       
-          // Remove the product from the wishlist after buying
-          const updatedWishlist = wishlist.filter(p => p.id != productId);
-          localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-        
+        // Check if the product is already in the wishlist
+        const isAlreadyInWishlist = wishlist.some(p => p.id === product.id);
+        if (isAlreadyInWishlist) {
+          alert('This product is already in your wishlist!');
+        } else {
+          wishlist.push(product);
+          localStorage.setItem('wishlist', JSON.stringify(wishlist));
+          alert('Product added to wishlist!');
+        }
       }
-    }
-  }
-});
-          
+    });
+  </script>
+</body>
+</html>

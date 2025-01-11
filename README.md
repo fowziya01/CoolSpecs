@@ -24,7 +24,7 @@
 
 #### Sunglasses's Glasses: ![sunglasses](/CoolSpecs/images/screenshot/sunglasses.png)
 
-#### Cart  Page : ![Cart] (/CoolSpecs/images/screenshot/cart.png)
+### Cart  Page : ![Cart] (/CoolSpecs/images/screenshot/cart.png)
 
  ## Author 
  [Fowziya Begam]

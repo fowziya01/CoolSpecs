@@ -1,20 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CoolSpecs/styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/CoolSpecs/styles/style.css">
+  <title>Your Cart</title><style>
+    /* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transition: visibility 0.3s ease;
+}
 
-    <title>Cart.....</title>
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Make Modal Visible */
+.modal.show {
+  visibility: visible;
+}
+
+/* Form Styling */
+h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  resize: vertical;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Payment Method Radio Buttons */
+h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:active {
+  background-color: #1e7e34;
+}
+
+/* Cancel Button Styling */
+button.cancel {
+  background-color: #dc3545;
+  margin-top: 10px;
+}
+
+button.cancel:hover {
+  background-color: #c82333;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
+  </style>
 </head>
-
-
 <body>
   <h3>Your Cart</h3>
   <div id="cart-container"></div>
-</body>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <h3>Enter Shipping and Payment Information</h3>
+      <!-- Shipping Address -->
+      <label for="address">Shipping Address:</label>
+      <textarea id="address" placeholder="Enter your address" required></textarea>
+
+      <!-- Payment Method -->
+      <h4>Select Payment Method:</h4>
+      <label>
+        <input type="radio" name="payment" value="credit-card" required> Credit Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="debit-card"> Debit Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="cod"> Cash on Delivery
+      </label>
+
+      <button onclick="submitOrder()">Submit Order</button>
+      <button type="button" class="cancel" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
   <script>
     const cartContainer = document.getElementById('cart-container');
+    const checkoutModal = document.getElementById('checkout-modal');
 
     // Get cart items from localStorage
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -34,16 +162,40 @@
         cartContainer.appendChild(card);
       });
     }
+
+    // Function to show the modal
     function buyNow() {
-      alert('Thank you for your purchase!');
+      checkoutModal.classList.add('show');
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      checkoutModal.classList.remove('show');
+    }
+
+    // Function to handle the order submission
+    function submitOrder() {
+      const address = document.getElementById('address').value.trim();
+      const paymentMethod = document.querySelector('input[name="payment"]:checked');
+
+      if (!address) {
+        alert('Please enter a shipping address.');
+        return;
+      }
+
+      if (!paymentMethod) {
+        alert('Please select a payment method.');
+        return;
+      }
+
+      alert(`Order placed successfully!\nAddress: ${address}\nPayment: ${paymentMethod.value}`);
       localStorage.removeItem('cart');
-      location.reload();
+      checkoutModal.classList.remove('show');
+      cartContainer.innerHTML = '<p>Your cart is empty.</p>';
     }
   </script>
 
-
-
-<script src="/CoolSpecs/sricpts/navbar.js" ></script>
-<script src="/CoolSpecs/sricpts/footer.js" ></script>
-
+  <script src="/CoolSpecs/sricpts/navbar.js"></script>
+  <script src="/CoolSpecs/sricpts/footer.js"></script>
+</body>
 </html>
