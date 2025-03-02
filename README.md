@@ -15,7 +15,7 @@
 #### Home Page: ![HomePage](https://raw.githubusercontent.com/fowziya01/CoolSpecs/main/images/screenshot/homepage.png)
 
 
-#### SignUp Page: ![signupPage](/CoolSpecs/images/screenshot/SignUp.png)
+#### SignUp Page: ![signupPage](https://raw.githubusercontent.com/fowziya01/CoolSpecs/main/images/screenshot/SignUp.png)
 
 #### Men's Glasses: Men’s eyewear is designed with both fashion and function in mind. Whether you need prescription lenses, sunglasses, or just a stylish accessory, there are countless frame shapes, colors, and materials to choose from. Popular styles include classic aviators, sleek rectangular frames, and bold round glasses. 
 
