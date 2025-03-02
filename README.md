@@ -12,7 +12,8 @@
 
 ### screenshots:
 
-#### Home Page: ![HomePage](/CoolSpecs/images/screenshot/homepage.png)
+#### Home Page: ![HomePage](https://raw.githubusercontent.com/fowziya01/CoolSpecs/main/images/screenshot/homepage.png)
+
 
 #### SignUp Page: ![signupPage](/CoolSpecs/images/screenshot/SignUp.png)
 
