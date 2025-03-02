@@ -26,7 +26,7 @@ Men’s eyewear is designed with both fashion and function in mind. Whether you 
 
 #### Sunglasses's Glasses: Sunglasses are essential for protecting your eyes from the harmful effects of UV rays while also adding a stylish touch to your look. Sunglasses come in a wide range of styles, from classic aviators and wayfarers to modern oversized frames.
 
-### Cart  Page : ![Cart] (https://raw.githubusercontent.com/fowziya01/CoolSpecs/main/images/screenshot/cart.png)
+### Cart  Page : ![Cart](https://raw.githubusercontent.com/fowziya01/CoolSpecs/main/images/screenshot/cart.png )
 
  ## Author 
  [Fowziya Begam]
